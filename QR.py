@@ -1,16 +1,15 @@
 import tkinter as tk
 from tkinter import ttk
 import pyqrcode
-import png
 
 
 class QRCodeLabel(tk.Label):
     def __init__(self, parent, qr_data):
         super().__init__(parent)
         qrcode = pyqrcode.create(qr_data)
-        tmp_png_file = "QRCode.png"
-        qrcode.png(tmp_png_file, scale=8)
-        self.image = tk.PhotoImage(file=tmp_png_file)
+        tmp_file = "QRCode.png"
+        qrcode.png(tmp_file, scale=8)
+        self.image = tk.PhotoImage(file=tmp_file)
         self.configure(image=self.image)
 
 
@@ -28,7 +27,7 @@ class QRGenerator:
         self.QRLabel = None
 
         self.Label.grid(column=0, row=0)
-        self.Entry.grid(column=0, row=1, pady=20)
+        self.Entry.grid(column=0, row=1, pady=20, padx=10)
         self.generateButton.grid(column=0, row=2)
 
     def generate(self):
@@ -36,11 +35,8 @@ class QRGenerator:
         self.QRLabel.grid(column=0, row=4)
 
 
-
-
-
-
 win = tk.Tk()
 gui = QRGenerator(win)
 win.mainloop()
+
 
