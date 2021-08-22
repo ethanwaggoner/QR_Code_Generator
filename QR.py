@@ -6,8 +6,10 @@ import pyqrcode
 class QRCodeLabel(tk.Label):
     def __init__(self, parent, qr_data):
         super().__init__(parent)
+        
         qrcode = pyqrcode.create(qr_data)
         tmp_file = "QRCode.png"
+        
         qrcode.png(tmp_file, scale=8)
         self.image = tk.PhotoImage(file=tmp_file)
         self.configure(image=self.image)
